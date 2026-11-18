@@ -1,0 +1,1056 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Quasar Lab | Identity</title>
+<meta name="description" content="Identity for The Quasar Lab, 2026.">
+<meta property="og:title" content="The Quasar Lab">
+<meta property="og:description" content="Identity, 2026">
+<meta property="og:image" content="img/poster-a2-party.jpg">
+<meta name="theme-color" content="#050307">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23050307'/%3E%3Cpath d='M20 3v9M20 28v9' stroke='%23A98BFF' stroke-width='2.4' stroke-linecap='round'/%3E%3Cellipse cx='20' cy='20' rx='16' ry='5' fill='none' stroke='%23FFB347' stroke-width='2.6'/%3E%3Ccircle cx='20' cy='20' r='5' fill='%23050307' stroke='%23FFE2A8' stroke-width='1.2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300..900&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400..700;1,400..700&display=swap">
+<style>
+:root{
+  --void:#050307;--cream:#F4EAD8;--halo:#FFF3D6;--gold:#FFB347;--molten:#FF7A1A;--ember:#FF4D1F;--jet:#A98BFF;--electric:#4D7CFF;
+  --paper:#EFE7DA;--archive:#14111A;--redline:#C4441A;--plasma:#FF2E88;--laser:#C8FF1F;--ion:#00E5FF;
+  --f-d:'Unbounded','Arial Black',Arial,sans-serif;--f-t:'Space Grotesk','Helvetica Neue',Arial,sans-serif;--f-m:'JetBrains Mono','Courier New',monospace;
+  --ease:cubic-bezier(.16,.84,.24,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#000;overflow:hidden}
+body{font-family:var(--f-t);color:var(--cream);-webkit-font-smoothing:antialiased}
+button{all:unset;cursor:pointer;box-sizing:border-box}
+:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+img,svg{display:block}
+img{max-width:100%;height:auto}
+
+/* ---------- stage ---------- */
+#deck{position:fixed;inset:0;display:grid;place-items:center;background:var(--bg,#050307);transition:background-color .7s var(--ease)}
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden}
+.s{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .7s var(--ease),visibility 0s .7s;overflow:hidden}
+.s.on{opacity:1;visibility:visible;transition:opacity .7s var(--ease),visibility 0s}
+.t-void{background:var(--void);color:var(--cream);--ink:var(--cream);--mute:#9C8F84;--key:var(--gold);--rule:rgba(244,234,216,.18)}
+.t-black{background:#000;color:var(--cream);--ink:var(--cream);--mute:#9C8F84;--key:var(--plasma);--rule:rgba(244,234,216,.18)}
+.t-paper{background:var(--paper);color:var(--archive);--ink:var(--archive);--mute:#6B6170;--key:var(--redline);--rule:rgba(20,17,26,.2)}
+.t-cream{background:var(--cream);color:var(--void);--ink:var(--void);--mute:#6B6170;--key:var(--plasma);--rule:rgba(5,3,7,.2)}
+.t-gold{background:var(--gold);color:var(--void);--ink:var(--void);--mute:#5A3208;--key:var(--void);--rule:rgba(5,3,7,.25)}
+
+/* grain */
+#stage::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:50;opacity:.09;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* entrance */
+@keyframes rise{from{opacity:0;transform:translateY(46px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.s [data-a]{opacity:0}
+.s.on [data-a]{animation:rise 1s var(--ease) both;animation-delay:calc(var(--i,0) * 90ms + 180ms)}
+.s.on [data-a=fade]{animation-name:fade;animation-duration:1.4s}
+.s.on [data-a=wipe]{animation-name:wipe;animation-duration:1.2s}
+
+/* type */
+.kick{font:500 20px/1.2 var(--f-m);letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.kick b{color:var(--key);font-weight:500}
+.mega{font:800 210px/.86 var(--f-d);letter-spacing:-.045em;text-transform:uppercase}
+.h1{font:700 128px/.92 var(--f-d);letter-spacing:-.04em}
+.h2{font:600 96px/.96 var(--f-d);letter-spacing:-.035em}
+.h3{font:500 54px/1.04 var(--f-d);letter-spacing:-.02em}
+.lede{font:400 32px/1.3 var(--f-t);max-width:720px;color:var(--mute)}
+.key{color:var(--key)}
+.hint{font:500 15px/1 var(--f-m);letter-spacing:.16em;text-transform:uppercase;color:var(--mute);display:inline-flex;align-items:center;gap:12px}
+.hint::before{content:"→";color:var(--key)}
+@keyframes pulse{50%{transform:scale(1.7);opacity:.35}}
+.pad{position:absolute;left:112px;right:112px;top:150px;bottom:130px}
+
+/* chips */
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{font:500 16px/1 var(--f-m);letter-spacing:.12em;text-transform:uppercase;padding:14px 20px;border:1.5px solid var(--rule);border-radius:0;color:var(--ink);transition:all .3s var(--ease)}
+.chip:hover{border-color:var(--ink)}
+.chip.on{background:var(--ink);color:var(--bgc,#050307);border-color:var(--ink)}
+.t-paper .chip.on,.t-cream .chip.on,.t-gold .chip.on{color:var(--paper)}
+
+/* ---------- HUD ---------- */
+#hud{position:fixed;inset:0;pointer-events:none;z-index:60;color:var(--hud,#F4EAD8);transition:color .6s var(--ease)}
+#hud>*{pointer-events:auto}
+#brand{position:absolute;left:clamp(16px,3vw,48px);top:clamp(14px,2.6vw,36px);display:flex;align-items:center;gap:12px;font:500 12px/1 var(--f-m);letter-spacing:.2em;text-transform:uppercase}
+#brand svg{width:34px;height:34px}
+#chap{position:absolute;right:clamp(16px,3vw,48px);top:clamp(14px,2.6vw,36px);font:500 12px/34px var(--f-m);letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+#ctrl{position:absolute;right:clamp(16px,3vw,48px);bottom:clamp(14px,2.6vw,32px);display:flex;align-items:center;gap:6px}
+#ctrl button{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;border:1px solid currentColor;opacity:.55;transition:opacity .2s,background .2s}
+#ctrl button:hover{opacity:1}
+#ctrl svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#count{position:absolute;left:clamp(16px,3vw,48px);bottom:clamp(14px,2.6vw,32px);font:500 12px/44px var(--f-m);letter-spacing:.2em;font-variant-numeric:tabular-nums}
+#count b{font-weight:700}
+#bar{position:fixed;left:0;top:0;height:3px;background:var(--gold);width:0;z-index:61;transition:width .6s var(--ease),background .6s}
+#toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);background:var(--cream);color:var(--void);font:500 14px/1 var(--f-m);letter-spacing:.12em;text-transform:uppercase;padding:14px 20px;border-radius:0;opacity:0;transition:all .35s var(--ease);z-index:70;pointer-events:none}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* overview */
+#ov{position:fixed;inset:0;z-index:80;background:rgba(5,3,7,.96);backdrop-filter:blur(12px);display:none;overflow:auto;padding:clamp(24px,5vw,80px)}
+#ov.on{display:block}
+#ov h2{font:700 clamp(28px,4vw,56px)/1 var(--f-d);color:var(--cream);margin-bottom:32px;letter-spacing:-.03em}
+#ovg{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+#ovg button{border:1px solid rgba(244,234,216,.18);padding:18px;min-height:120px;display:flex;flex-direction:column;justify-content:space-between;gap:16px;color:var(--cream);transition:all .25s var(--ease)}
+#ovg button:hover,#ovg button.on{border-color:var(--gold);background:rgba(255,179,71,.08)}
+#ovg i{font:500 12px var(--f-m);letter-spacing:.2em;color:var(--gold);font-style:normal}
+#ovg span{font:600 20px/1.15 var(--f-d);letter-spacing:-.01em}
+#notes{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);width:min(860px,calc(100vw - 32px));background:var(--cream);color:var(--void);padding:18px 24px;font:400 18px/1.45 var(--f-t);z-index:70;display:none;border-radius:6px}
+#notes.on{display:block}
+#notes b{font:500 11px var(--f-m);letter-spacing:.2em;text-transform:uppercase;display:block;margin-bottom:6px;color:#6B6170}
+
+/* ---------- 01 cover ---------- */
+.glow{position:absolute;width:1500px;height:1500px;left:var(--gx,62%);top:var(--gy,50%);transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(255,196,90,.55) 0%,rgba(255,122,26,.28) 18%,rgba(140,24,72,.32) 38%,rgba(60,10,40,.18) 55%,transparent 70%);pointer-events:none;transition:left 1.2s var(--ease),top 1.2s var(--ease)}
+.qm{position:absolute;overflow:visible}
+.qm .jet{stroke:var(--jet);stroke-linecap:round}
+.qm .jetg{stroke:var(--jet);stroke-linecap:round;opacity:.22}
+.qm .disk{fill:none;stroke:var(--gold);stroke-linecap:round}
+.qm .orbit{fill:none;stroke:var(--gold);opacity:.45}
+.qm .core{fill:#000;stroke:#FFF3D6}
+.qm [data-p]{transition:opacity .35s var(--ease)}
+#s-cover .qm{width:1240px;height:1240px;left:1190px;top:540px;transform:translate(-50%,-50%)}
+.cover-copy{position:absolute;left:112px;bottom:150px;display:flex;flex-direction:column;gap:34px;z-index:2}
+.cover-copy .tag{font:500 40px/1.1 var(--f-d);color:var(--gold);letter-spacing:-.01em}
+.cover-copy .hint{margin-top:10px}
+
+/* ---------- 02 split ---------- */
+.split{display:flex}
+.half{flex:1;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0 96px 170px;transition:flex .9s var(--ease);overflow:hidden;cursor:default}
+.split:hover .half:hover{flex:1.55}
+.half.r{background:var(--paper);color:var(--archive);--mute:#6B6170}
+.half.p{background:#000;color:var(--cream);--mute:#9C8F84}
+.half .h1{white-space:nowrap}
+.half .sub{font:500 18px/1.6 var(--f-m);letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-top:28px}
+.half .kick{position:absolute;top:150px;left:96px}
+.half.p::before{content:"";position:absolute;width:900px;height:900px;right:-300px;top:-200px;border-radius:50%;background:radial-gradient(circle,rgba(255,46,136,.35),rgba(122,61,255,.15) 40%,transparent 68%);transition:transform 1.2s var(--ease)}
+.half.p:hover::before{transform:scale(1.25)}
+.half.r::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(20,17,26,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(20,17,26,.07) 1px,transparent 1px);background-size:48px 48px}
+.root{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:18px;pointer-events:none}
+.root .badge{width:210px;height:210px;border-radius:50%;background:#050307;display:grid;place-items:center;box-shadow:0 0 0 10px rgba(255,179,71,.18),0 0 120px rgba(255,179,71,.45)}
+.root .badge svg{width:150px;height:150px}
+.root p{font:600 22px/1 var(--f-m);letter-spacing:.24em;text-transform:uppercase;background:var(--gold);color:var(--void);padding:12px 18px}
+
+/* ---------- 03 insight ---------- */
+.ins{display:grid;grid-template-columns:640px 1fr;gap:80px;align-items:center}
+.ins .h2{font-size:84px}
+.fig{position:relative;border-radius:4px;overflow:hidden}
+.fig img{width:100%;height:auto}
+.dot{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:2px solid var(--redline);background:rgba(196,68,26,.12);transition:transform .3s var(--ease),background .3s}
+.dot::after{content:"";position:absolute;inset:-12px;border-radius:50%;border:1.5px solid var(--redline);animation:ring 2s ease-out infinite;opacity:0}
+@keyframes ring{0%{transform:scale(.6);opacity:.8}100%{transform:scale(1.5);opacity:0}}
+.dot:hover,.dot.on{transform:scale(1.25);background:var(--redline)}
+.read{min-height:150px;border-top:1.5px solid var(--ink);padding-top:22px;margin-top:44px}
+.read b{font:500 18px/1 var(--f-m);letter-spacing:.2em;text-transform:uppercase;color:var(--key);display:block;margin-bottom:14px}
+.read span{font:500 40px/1.15 var(--f-d);letter-spacing:-.02em}
+
+/* ---------- 04 mark ---------- */
+#s-mark .qm{width:900px;height:900px;left:1230px;top:540px;transform:translate(-50%,-50%)}
+.parts{position:absolute;left:112px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:0;width:560px}
+.parts button{display:grid;grid-template-columns:70px 1fr;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--rule);transition:padding .35s var(--ease)}
+.parts button:first-of-type{border-top:1px solid var(--rule)}
+.parts i{font:500 16px var(--f-m);font-style:normal;letter-spacing:.16em;color:var(--mute)}
+.parts strong{font:700 72px/1 var(--f-d);letter-spacing:-.04em;transition:color .3s}
+.parts em{grid-column:2;font:400 22px/1.3 var(--f-t);font-style:normal;color:var(--mute);max-height:0;overflow:hidden;transition:max-height .45s var(--ease),margin .45s var(--ease)}
+.parts button:hover,.parts button.on{padding-left:18px}
+.parts button:hover strong,.parts button.on strong{color:var(--gold)}
+.parts button:hover em,.parts button.on em{max-height:60px;margin-top:10px}
+.qm.iso [data-p]{opacity:.08}
+.qm.iso [data-p].hit{opacity:1}
+.cap{position:absolute;right:112px;bottom:140px;text-align:right}
+
+/* ---------- 05 lockups ---------- */
+#s-lock{transition:background-color .7s var(--ease),color .7s var(--ease)}
+.lock-stage{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);width:1480px}
+.lock-stage img{position:absolute;inset:0;width:100%;height:auto;opacity:0;transform:scale(.97);transition:opacity .7s var(--ease),transform .9s var(--ease)}
+.lock-stage img.on{opacity:1;transform:none}
+.lock-stage{height:384px}
+.lock-top{position:absolute;left:112px;top:150px}
+.lock-bot{position:absolute;left:112px;right:112px;bottom:130px;display:flex;justify-content:space-between;align-items:flex-end}
+
+/* ---------- 06 registers ---------- */
+.reg{position:absolute;left:0;right:0;top:330px;bottom:110px;display:flex;align-items:center;justify-content:center;gap:64px}
+.reg .post{width:320px;box-shadow:0 30px 80px rgba(0,0,0,.6);transition:transform .7s var(--ease)}
+.reg .post img{width:100%}
+.reg .post.l{transform:rotate(-4deg)}.reg .post.rr{transform:rotate(4deg)}
+.reg .post:hover{transform:rotate(0) scale(1.04)}
+.cmp{position:relative;width:600px;height:600px;overflow:hidden;cursor:ew-resize;touch-action:none;border-radius:4px}
+.cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cmp .top{clip-path:inset(0 0 0 var(--x,50%))}
+.cmp .hd{position:absolute;top:0;bottom:0;left:var(--x,50%);width:3px;margin-left:-1.5px;background:var(--gold)}
+.cmp .hd::after{content:"";position:absolute;top:50%;left:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23050307' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6l-6 6 6 6M15 6l6 6-6 6'/%3E%3C/svg%3E") center/28px no-repeat}
+.cmp .lb{position:absolute;bottom:18px;font:600 15px var(--f-m);letter-spacing:.2em;text-transform:uppercase;padding:8px 12px}
+.cmp .lb.a{left:18px;background:var(--paper);color:var(--archive)}
+.cmp .lb.b{right:18px;background:var(--plasma);color:#000}
+.reg-t{position:absolute;left:0;right:0;top:120px;text-align:center}
+
+/* ---------- 07 NOT ---------- */
+.not{position:absolute;left:112px;top:120px}
+.not .word{position:relative;display:inline-block}
+.not .word span{font:900 330px/.9 var(--f-d);letter-spacing:-.05em;color:#B4AAB5;display:block}
+.not .word svg{position:absolute;left:-40px;top:-30px;width:calc(100% + 80px);height:calc(100% + 60px);overflow:visible;pointer-events:none}
+.not .word path{fill:none;stroke:var(--plasma);stroke-width:34;stroke-linecap:round;stroke-dasharray:1000;stroke-dashoffset:1000}
+.not.drawn .word path{transition:stroke-dashoffset .55s cubic-bezier(.6,.05,.3,1)}
+.not.drawn .word path:nth-child(2){transition-delay:.4s}
+.not.drawn .word path{stroke-dashoffset:0}
+.not .df{font:900 172px/.9 var(--f-d);letter-spacing:-.045em;text-transform:uppercase;margin-top:18px}
+.not .pp{font:600 26px/1 var(--f-m);letter-spacing:.24em;text-transform:uppercase;color:var(--redline);margin-top:34px}
+.not-act{position:absolute;left:112px;bottom:130px;display:flex;gap:28px;align-items:center}
+.btn{font:600 16px/1 var(--f-m);letter-spacing:.16em;text-transform:uppercase;padding:18px 26px;border-radius:0;background:var(--ink);color:var(--cream);transition:transform .25s var(--ease)}
+.t-cream .btn,.t-paper .btn{color:var(--cream)}
+.t-void .btn,.t-black .btn{color:var(--void)}
+.btn:hover{transform:scale(1.05)}
+.swag{position:absolute;right:112px;top:170px;width:620px;height:760px}
+.swag>div{position:absolute;filter:drop-shadow(0 24px 40px rgba(5,3,7,.25));transition:transform .6s var(--ease)}
+.swag>div:hover{transform:rotate(0) scale(1.06)!important;z-index:2}
+.swag .a{width:400px;left:0;top:0;transform:rotate(-7deg)}
+.swag .b{width:330px;right:0;bottom:30px;transform:rotate(9deg)}
+.swag svg{width:100%;height:auto}
+
+/* ---------- 08 stickers / 09 formal ---------- */
+.wall{position:absolute;left:112px;right:112px;top:300px;bottom:110px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:20px 40px;align-items:center;justify-items:center}
+.stk{width:300px;transform:rotate(var(--r,0deg));transition:transform .5s var(--ease),filter .5s;filter:drop-shadow(0 10px 18px rgba(0,0,0,.4));cursor:grab;position:relative}
+.stk:hover{transform:rotate(0) scale(1.14) translateY(-8px);filter:drop-shadow(0 30px 40px rgba(0,0,0,.6));z-index:3}
+.stk svg{width:100%;height:auto}
+.stk em{position:absolute;left:50%;bottom:-24px;transform:translateX(-50%);font:500 13px var(--f-m);font-style:normal;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);opacity:0;transition:opacity .3s;white-space:nowrap}
+.stk:hover em{opacity:1}
+.top-t{position:absolute;left:112px;top:140px;right:112px;display:flex;justify-content:space-between;align-items:flex-end}
+.formal{position:absolute;left:112px;right:112px;top:380px;display:grid;grid-template-columns:repeat(5,1fr);gap:28px}
+.formal figure{transition:transform .6s var(--ease)}
+.formal figure:hover{transform:translateY(-14px)}
+.formal svg{width:100%;height:auto;box-shadow:0 20px 50px rgba(20,17,26,.18)}
+.formal figcaption{font:500 14px/1.4 var(--f-m);letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-top:18px}
+
+/* ---------- 10 palette ---------- */
+.pal{position:absolute;left:0;right:0;top:400px;bottom:0;display:flex}
+.pal button{flex:1;position:relative;transition:flex .7s var(--ease);display:flex;flex-direction:column;justify-content:flex-end;padding:0 28px 120px;color:var(--c,#F4EAD8);overflow:hidden}
+.pal button:hover{flex:2.6}
+.pal button:first-child{box-shadow:inset 0 0 0 1px rgba(244,234,216,.25)}
+.pal b{font:700 44px/1 var(--f-d);letter-spacing:-.03em;white-space:nowrap}
+.pal span{font:500 18px var(--f-m);letter-spacing:.14em;margin-top:12px;opacity:.75;white-space:nowrap}
+.pal-t{position:absolute;left:112px;top:140px}
+
+/* ---------- 11 type ---------- */
+.ty{position:absolute;left:112px;right:112px;top:140px;bottom:130px;display:flex;flex-direction:column}
+.ty .live{font:800 168px/.88 var(--f-d);letter-spacing:-.045em;text-transform:uppercase;outline:none;min-height:300px;margin-top:40px;word-break:break-word;caret-color:var(--void)}
+.ty .live:empty::before{content:"Type here";opacity:.3}
+.fam{margin-top:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;border-top:2px solid var(--void);padding-top:28px}
+.fam div{display:flex;gap:28px;align-items:flex-end}
+.fam strong{font-size:120px;line-height:.8}
+.fam p{font:500 16px/1.5 var(--f-m);letter-spacing:.14em;text-transform:uppercase}
+.fam p span{display:block;opacity:.6}
+
+/* ---------- 12 illustration ---------- */
+.ill{position:absolute;right:0;top:0;bottom:0;width:1240px}
+.ill img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1s var(--ease),transform 6s linear}
+.ill img.on{opacity:1;transform:scale(1)}
+.ill::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#000 0,transparent 22%)}
+.ill-t{position:absolute;left:112px;top:150px;bottom:130px;width:620px;display:flex;flex-direction:column;justify-content:space-between;z-index:2}
+.ill-t .chips{flex-direction:column;align-items:flex-start}
+.ill-t .chip i{font-style:normal;opacity:.55;margin-left:10px}
+
+/* ---------- 13 kit ---------- */
+.kit{position:absolute;left:760px;right:60px;top:110px;bottom:90px}
+.kit figure{position:absolute;box-shadow:0 40px 80px rgba(0,0,0,.55);transition:transform .7s var(--ease);border-radius:6px;overflow:hidden}
+.kit figure img{width:100%;height:auto}
+.kit figure:hover{transform:translateY(-24px) rotate(0deg)!important;z-index:5}
+.kit .k1{width:360px;left:0;top:200px;transform:rotate(-6deg)}
+.kit .k2{width:350px;left:290px;top:40px;transform:rotate(-1deg);z-index:2}
+.kit .k3{width:380px;left:570px;top:230px;transform:rotate(4deg);z-index:3}
+.kit .k4{width:340px;left:800px;top:110px;transform:rotate(9deg);z-index:1}
+.lt{position:absolute;left:112px;top:150px;bottom:130px;width:600px;display:flex;flex-direction:column;justify-content:space-between}
+
+/* ---------- 14 booth ---------- */
+.booth{position:absolute;left:112px;right:112px;bottom:150px;height:560px;display:flex;align-items:flex-end;justify-content:center;gap:40px}
+.booth figure{transition:width .9s var(--ease),height .9s var(--ease);flex:none}
+.booth img{width:100%;height:100%;object-fit:contain;object-position:bottom}
+.booth .bw{width:700px;height:560px}
+.booth .ru{width:238px;height:560px}
+.booth .ps{width:0;height:0;overflow:hidden;opacity:0;transition:all .9s var(--ease)}
+.booth .ps svg{height:100%;width:auto;fill:none;stroke:var(--cream);stroke-width:3;stroke-linecap:round}
+.booth.scale .bw{width:700px;height:560px}
+.booth.scale .ru{width:198px;height:502px}
+.booth.scale .ps{width:56px;height:397px;opacity:1}
+.booth-floor{position:absolute;left:112px;right:112px;bottom:149px;height:1px;background:var(--rule)}
+
+/* ---------- 15 keep ---------- */
+.keep{position:absolute;left:112px;right:112px;top:330px;display:grid;grid-template-columns:repeat(6,1fr);gap:32px;align-items:center;perspective:900px}
+.coin{transition:transform 1s var(--ease);transform-style:preserve-3d;filter:drop-shadow(0 18px 24px rgba(0,0,0,.5))}
+.coin:hover{transform:rotateY(360deg) scale(1.08)}
+.coin img{width:100%;height:auto}
+.keep .st{transform:rotate(var(--r));transition:transform .5s var(--ease)}
+.keep .st:hover{transform:rotate(0) scale(1.12)}
+.keep figcaption{font:500 13px/1.4 var(--f-m);letter-spacing:.16em;text-transform:uppercase;color:var(--mute);text-align:center;margin-top:20px}
+.keep-b{position:absolute;left:112px;right:112px;bottom:130px;display:flex;justify-content:space-between;align-items:flex-end}
+
+/* ---------- 16 wear ---------- */
+.wear{position:absolute;left:720px;right:80px;top:120px;bottom:110px;display:flex;align-items:center;gap:30px;perspective:1200px}
+.tilt{transition:transform .25s ease-out;transform-style:preserve-3d;box-shadow:0 30px 70px rgba(0,0,0,.5);border-radius:10px;overflow:hidden;flex:none}
+.tilt img{width:100%;height:auto}
+.wear .bd{width:400px}
+.wear .id{width:250px}
+.wear .tt{width:380px}
+
+/* ---------- 17 season ---------- */
+.season{position:absolute;left:112px;right:112px;top:270px;display:grid;grid-template-columns:repeat(3,420px);justify-content:space-between}
+.ev{display:flex;flex-direction:column;gap:22px;transition:transform .6s var(--ease)}
+.ev .pv{box-shadow:0 30px 70px rgba(0,0,0,.6);transition:box-shadow .6s var(--ease)}
+.ev .pv svg{width:100%;height:auto}
+.ev:hover{transform:translateY(-16px)}
+.ev:hover .pv{box-shadow:0 30px 120px var(--g)}
+.ev .m{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--rule);padding-top:16px}
+.ev .m b{font:600 30px/1 var(--f-d);letter-spacing:-.02em}
+.ev .m span{font:500 15px var(--f-m);letter-spacing:.16em;text-transform:uppercase;color:var(--g)}
+.season .ev .pv{line-height:0}
+
+/* ---------- 18 web ---------- */
+.web{position:absolute;right:112px;top:150px;width:980px}
+.browser{background:#1a1720;border-radius:12px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.6)}
+.browser .bar{height:40px;display:flex;align-items:center;gap:8px;padding:0 16px}
+.browser .bar i{width:12px;height:12px;border-radius:50%;background:#3a3540}
+.browser .scr{position:relative;aspect-ratio:1600/1000}
+.browser .scr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s var(--ease)}
+.browser .scr img.on{opacity:1}
+.chap{position:absolute;left:112px;top:150px;width:620px}
+.chap ol{list-style:none;margin-top:40px}
+.chap li button{display:grid;grid-template-columns:50px 1fr;width:100%;padding:13px 0;border-bottom:1px solid var(--rule);font:500 26px/1.2 var(--f-d);letter-spacing:-.01em;color:var(--mute);transition:all .35s var(--ease)}
+.chap li button i{font:500 15px/1.8 var(--f-m);font-style:normal;letter-spacing:.1em}
+.chap li button:hover,.chap li button.on{color:var(--cream);padding-left:14px}
+.chap li button.on i{color:var(--gold)}
+.chap-line{position:absolute;left:112px;right:112px;bottom:120px;font:700 64px/1 var(--f-d);letter-spacing:-.035em;color:var(--gold)}
+
+/* ---------- 19 close ---------- */
+#s-close .qm{width:1000px;height:1000px;left:50%;top:44%;transform:translate(-50%,-50%)}
+#s-close .glow{left:50%;top:44%}
+.close-t{position:absolute;left:0;right:0;bottom:130px;text-align:center;z-index:2}
+.close-t .h1{font-size:92px}
+.close-t .kick{margin-top:30px}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.s [data-a]{opacity:1}}
+</style>
+</head>
+<body>
+<div id="deck"><main id="stage">
+
+<!-- 01 COVER -->
+<section class="s t-void on" id="s-cover" data-ch="Brand concept" data-title="The Quasar Lab" data-note="One identity for a lab that lives in two worlds. Move the cursor: the mark answers.">
+  <div class="glow" id="coverGlow"></div>
+  <svg class="qm" id="heroMark" viewBox="-500 -500 1000 1000" aria-hidden="true"></svg>
+  <div class="cover-copy">
+    <p class="kick" data-a style="--i:0">Identity / 2026</p>
+    <h1 class="mega" data-a style="--i:1">The<br>Quasar<br>Lab</h1>
+    <p class="tag" data-a style="--i:2">Become the brightest light.</p>
+    
+  </div>
+</section>
+
+<!-- 02 TWO WORLDS -->
+<section class="s t-black split" id="s-split" data-ch="The brief" data-title="One lab. Two worlds." data-note="The lab publishes research and throws parties. One identity has to hold up to citation and to a dancefloor.">
+  <div class="half r"><p class="kick" data-a>Research</p><h2 class="h1" data-a style="--i:1">A dissertation.</h2><p class="sub" data-a style="--i:2">For universities, funders, partners</p></div>
+  <div class="half p"><p class="kick" data-a>Party</p><h2 class="h1" data-a style="--i:2">A dancefloor.</h2><p class="sub" data-a style="--i:3">For the booth, the panel, the afterparty</p></div>
+  <div class="root" data-a="fade" style="--i:4"><div class="badge"><svg class="qm" id="rootMark" viewBox="-500 -500 1000 1000" aria-hidden="true"></svg></div><p>Same mark</p></div>
+</section>
+
+<!-- 03 INSIGHT -->
+<section class="s t-paper" id="s-insight" data-ch="The idea" data-title="Light from far away" data-note="A quasar is a black hole that outshines entire galaxies. The darkest point sits inside the brightest light. That is the lab: designing for the people systems missed.">
+  <div class="pad ins">
+    <div>
+      <p class="kick" data-a>Why a quasar</p>
+      <h2 class="h2" data-a style="--i:1;margin-top:28px">The darkest point sits inside the brightest light.</h2>
+      <div class="read" data-a style="--i:2"><b id="insK">Click the red points</b><span id="insV">A black hole that outshines its galaxy.</span></div>
+    </div>
+    <div class="fig" data-a style="--i:2">
+      <img src="img/illustration-anatomy-research.jpg" width="1600" height="1200" alt="Anatomy of a quasar: core, accretion disk, halo and jets">
+      <button class="dot" data-k="core" style="left:50%;top:46.6%" aria-label="Core"></button>
+      <button class="dot" data-k="disk" style="left:23.6%;top:48%" aria-label="Disk"></button>
+      <button class="dot" data-k="jet" style="left:50%;top:19%" aria-label="Jet"></button>
+      <button class="dot" data-k="halo" style="left:64%;top:54%" aria-label="Halo"></button>
+    </div>
+  </div>
+</section>
+
+<!-- 04 MARK -->
+<section class="s t-void" id="s-mark" data-ch="Identity" data-title="The mark" data-note="Four parts, used everywhere: illustrations, icons, motion. Hover each word to isolate it. Move the cursor and the disk tilts; it reads at any angle.">
+  <div class="glow" style="--gx:64%;opacity:.55"></div>
+  <svg class="qm" id="partMark" viewBox="-500 -500 1000 1000" aria-hidden="true"></svg>
+  <div class="parts" id="partList">
+    <p class="kick" data-a style="margin-bottom:30px">The symbol</p>
+    <button data-part="core" data-a style="--i:1"><i>01</i><strong>Core</strong><em>The system that swallows people.</em></button>
+    <button data-part="disk" data-a style="--i:2"><i>02</i><strong>Disk</strong><em>The community in orbit around it.</em></button>
+    <button data-part="jets" data-a style="--i:3"><i>03</i><strong>Jets</strong><em>Where the work goes, and how far.</em></button>
+    <button data-part="glow" data-a style="--i:4"><i>04</i><strong>Glow</strong><em>The light that escapes.</em></button>
+  </div>
+</section>
+
+<!-- 05 LOCKUPS -->
+<section class="s t-black" id="s-lock" data-ch="Identity" data-title="One name. Every surface." data-note="Same lockup, four colorways: party, research ink, gold foil, color on cream. Click through them.">
+  <div class="lock-top"><p class="kick" data-a>Primary lockup</p><h2 class="h2" data-a style="--i:1;margin-top:24px">Holds up in gold foil<br>and on a club flyer.</h2></div>
+  <div class="lock-stage" id="lockStage" data-a="fade" style="--i:2;top:58%">
+    <img class="on" src="img/logo-primary-party.jpg" data-bg="#000000" data-fg="#F4EAD8" alt="Primary lockup, party colorway" width="1480" height="384">
+    <img src="img/logo-primary-research.jpg" data-bg="#EFE7DA" data-fg="#14111A" alt="Primary lockup, research ink on paper" width="1480" height="384">
+    <img src="img/logo-primary-gold-foil.jpg" data-bg="#050308" data-fg="#FFB347" alt="Primary lockup, gold foil" width="1480" height="384">
+    <img src="img/logo-primary-color-cream.jpg" data-bg="#F3EBD8" data-fg="#050307" alt="Primary lockup, color on cream" width="1480" height="384">
+  </div>
+  <div class="lock-bot"><div class="chips" id="lockChips" data-a style="--i:3"><button class="chip on">Party</button><button class="chip">Research</button><button class="chip">Gold foil</button><button class="chip">Cream</button></div><p class="kick" data-a style="--i:4">Never under 120 px / 30 mm</p></div>
+</section>
+
+<!-- 06 REGISTERS -->
+<section class="s t-black" id="s-reg" data-ch="Identity" data-title="Two registers" data-note="Same structure, different temperature. Research behaves like an archive. Party behaves like light. Drag across the middle plate.">
+  <div class="reg-t"><p class="kick" data-a>Two registers, drag the middle plate</p><h2 class="h3" data-a style="--i:1;margin-top:20px">Paper for the archive, <span class="key">black for the party.</span></h2></div>
+  <div class="reg">
+    <div class="post l" data-a style="--i:2"><img src="img/poster-a2-research.jpg" alt="Research poster: The Seventh Dimension" width="1132" height="1600"></div>
+    <div class="cmp" id="cmp" data-a style="--i:3">
+      <img src="img/texture-preset-research-paper.jpg" alt="Research texture, uncoated paper">
+      <img class="top" src="img/texture-preset-party-club.jpg" alt="Party texture, club">
+      <i class="hd"></i><span class="lb a">Research</span><span class="lb b">Party</span>
+    </div>
+    <div class="post rr" data-a style="--i:4"><img src="img/poster-a2-party.jpg" alt="Party poster: Reality Hack Afterparty" width="1132" height="1600"></div>
+  </div>
+</section>
+
+<!-- 07 NOT -->
+<section class="s t-cream" id="s-not" data-ch="The line" data-title="Designed For" data-note="Not Designed For described the problem. Crossing it out says what the lab does. Let the X draw itself, then replay it.">
+  <div class="not" id="notBox">
+    <div class="word" data-a><span>NOT</span><svg viewBox="0 0 600 300" preserveAspectRatio="none"><path d="M30 40 Q300 140 570 262" pathLength="1000"/><path d="M560 30 Q310 120 50 270" pathLength="1000"/></svg></div>
+    <p class="df" data-a style="--i:1">Designed<br>For</p>
+    <p class="pp" data-a style="--i:2">The people systems missed.</p>
+  </div>
+  <div class="swag">
+    <div class="a" data-a style="--i:3"><svg viewBox="0 0 460 520" role="img" aria-label="Sticker: the word NOT crossed out with a pink hand-drawn X, above DESIGNED FOR, the people systems missed">
+<rect x="20" y="40" width="420" height="440" rx="44" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="30"/>
+<rect x="20" y="40" width="420" height="440" rx="44" fill="#F4EAD8"/>
+<text x="230" y="196" text-anchor="middle" font-family="Unbounded, Arial, sans-serif" font-weight="900" font-size="112" fill="#9A8F9C">NOT</text>
+<path d="M104 98 Q230 150 358 214" fill="none" stroke="#FF2E88" stroke-width="24" stroke-linecap="round"/>
+<path d="M352 92 Q236 140 110 224" fill="none" stroke="#FF2E88" stroke-width="24" stroke-linecap="round"/>
+<text x="230" y="312" text-anchor="middle" font-family="Unbounded, Arial, sans-serif" font-weight="900" font-size="66" fill="#14111A" textLength="360" lengthAdjust="spacingAndGlyphs">DESIGNED</text>
+<text x="230" y="386" text-anchor="middle" font-family="Unbounded, Arial, sans-serif" font-weight="900" font-size="66" fill="#14111A">FOR</text>
+<text x="230" y="440" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="700" font-size="17" letter-spacing="3" fill="#A8380F">THE PEOPLE SYSTEMS MISSED</text>
+</svg></div>
+    <div class="b" data-a style="--i:4"><svg viewBox="0 0 400 400" role="img" aria-label="Round button: NOT crossed out with a lime X, DESIGNED FOR, with the Quasar mark">
+<circle cx="200" cy="200" r="194" fill="#FFFFFF"/>
+<circle cx="200" cy="200" r="178" fill="#FF2E88"/>
+<text x="200" y="128" text-anchor="middle" font-family="Unbounded, Arial, sans-serif" font-weight="900" font-size="58" fill="#050307">NOT</text>
+<path d="M128 70 Q200 100 272 138" fill="none" stroke="#C8FF1F" stroke-width="16" stroke-linecap="round"/>
+<path d="M270 72 Q204 98 132 142" fill="none" stroke="#C8FF1F" stroke-width="16" stroke-linecap="round"/>
+<text x="200" y="208" text-anchor="middle" font-family="Unbounded, Arial, sans-serif" font-weight="900" font-size="50" fill="#FFFFFF" textLength="290" lengthAdjust="spacingAndGlyphs">DESIGNED</text>
+<text x="200" y="262" text-anchor="middle" font-family="Unbounded, Arial, sans-serif" font-weight="900" font-size="50" fill="#FFFFFF">FOR</text>
+<g transform="translate(200 318)">
+<path d="M0 -30 V-12 M0 12 V30" stroke="#7A3DFF" stroke-width="5" stroke-linecap="round"/>
+<ellipse rx="44" ry="12" fill="none" stroke="#FFC21A" stroke-width="6"/>
+<circle r="12" fill="#050307" stroke="#FFFFFF" stroke-width="2.5"/>
+</g>
+</svg></div>
+  </div>
+  <div class="not-act" data-a style="--i:5"><button class="btn" id="notBtn">Redraw</button></div>
+</section>
+
+<!-- 08 STICKERS -->
+<section class="s t-void" id="s-stk" data-ch="Identity" data-title="Eight ways to wear it" data-note="Eight sticker directions. Every one keeps core, disk and jets, so any of them can lead without breaking the system.">
+  <div class="top-t"><div><p class="kick" data-a>Sticker marks</p><h2 class="h2" data-a style="--i:1;margin-top:20px">Eight sticker marks</h2></div><p class="kick" data-a style="--i:2">Pick a lead at the review</p></div>
+  <div class="wall">
+    <div class="stk" data-a style="--i:2;--r:-6deg"><svg viewBox="0 0 600 600" role="img" aria-label="Seal sticker: The Quasar Lab, research and design, established MIT 2018">
+<defs>
+<radialGradient id="sg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFF3D6"/><stop offset=".35" stop-color="#FFB347"/><stop offset=".7" stop-color="#FF5A1F" stop-opacity=".35"/><stop offset="1" stop-color="#FF5A1F" stop-opacity="0"/></radialGradient>
+<path id="arc" d="M300,300 m-198,0 a198,198 0 1,1 396,0 a198,198 0 1,1 -396,0"/>
+</defs>
+<circle cx="300" cy="300" r="284" fill="#FFFFFF"/>
+<circle cx="300" cy="300" r="262" fill="#050307"/>
+<circle cx="300" cy="300" r="248" fill="none" stroke="#FFB347" stroke-width="5"/>
+<circle cx="300" cy="300" r="162" fill="none" stroke="#FFB347" stroke-width="3"/>
+<text font-family="Unbounded, Arial, sans-serif" font-weight="700" font-size="30" fill="#F4EAD8" letter-spacing="6"><textPath href="#arc" textLength="1225" lengthAdjust="spacing">THE QUASAR LAB Â· RESEARCH + DESIGN Â· EST. MIT 2018 Â·</textPath></text>
+<circle cx="300" cy="300" r="150" fill="url(#sg)" opacity=".85"/>
+<path d="M300 150 V232 M300 368 V450" stroke="#A98BFF" stroke-width="10" stroke-linecap="round"/>
+<ellipse cx="300" cy="300" rx="134" ry="38" fill="none" stroke="#FFB347" stroke-width="16"/>
+<circle cx="300" cy="300" r="40" fill="#050307" stroke="#FFE2A8" stroke-width="6"/>
+</svg><em>Seal</em></div>
+    <div class="stk" data-a style="--i:3;--r:5deg"><svg viewBox="0 0 600 600" role="img" aria-label="Lab flask sticker: a black hole glowing inside a laboratory flask, with a Quasar Lab banner">
+<defs>
+<clipPath id="fk"><path d="M252 96 H348 V224 L466 468 Q480 506 442 506 H158 Q120 506 134 468 L252 224 Z"/></clipPath>
+<radialGradient id="fg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFF3D6"/><stop offset=".35" stop-color="#FFB347"/><stop offset=".75" stop-color="#FF5A1F" stop-opacity=".4"/><stop offset="1" stop-color="#FF5A1F" stop-opacity="0"/></radialGradient>
+</defs>
+<g stroke="#FFFFFF" stroke-width="30" stroke-linejoin="round" fill="#FFFFFF">
+<path d="M252 96 H348 V224 L466 468 Q480 506 442 506 H158 Q120 506 134 468 L252 224 Z"/>
+<rect x="232" y="66" width="136" height="40" rx="14"/>
+<rect x="104" y="500" width="392" height="78" rx="39"/>
+</g>
+<path d="M252 96 H348 V224 L466 468 Q480 506 442 506 H158 Q120 506 134 468 L252 224 Z" fill="#050307"/>
+<g clip-path="url(#fk)">
+<path d="M150 330 Q300 300 450 330 V520 H150 Z" fill="#1B1028"/>
+<circle cx="300" cy="404" r="140" fill="url(#fg)"/>
+<path d="M300 300 V364 M300 444 V510" stroke="#A98BFF" stroke-width="9" stroke-linecap="round"/>
+<ellipse cx="300" cy="404" rx="130" ry="30" fill="none" stroke="#FFB347" stroke-width="14"/>
+<circle cx="300" cy="404" r="34" fill="#050307" stroke="#FFE2A8" stroke-width="5"/>
+<circle cx="270" cy="280" r="9" fill="#F4EAD8" opacity=".85"/>
+<circle cx="322" cy="246" r="6" fill="#F4EAD8" opacity=".7"/>
+<circle cx="296" cy="200" r="5" fill="#F4EAD8" opacity=".55"/>
+</g>
+<path d="M252 96 H348 V224 L466 468 Q480 506 442 506 H158 Q120 506 134 468 L252 224 Z" fill="none" stroke="#F4EAD8" stroke-width="7" stroke-linejoin="round"/>
+<rect x="232" y="66" width="136" height="40" rx="14" fill="#F4EAD8"/>
+<path d="M276 140 H300 M276 176 H312" stroke="#F4EAD8" stroke-width="5" stroke-linecap="round" opacity=".7"/>
+<rect x="104" y="500" width="392" height="78" rx="39" fill="#050307"/>
+<text x="300" y="552" text-anchor="middle" font-family="Unbounded, Arial, sans-serif" font-weight="800" font-size="36" letter-spacing="4" fill="#FFB347">QUASAR LAB</text>
+</svg><em>Lab flask</em></div>
+    <div class="stk" data-a style="--i:4;--r:-3deg"><svg viewBox="0 0 600 600" role="img" aria-label="Q monogram sticker: a glowing ring with a black hole inside and a tail that makes the letter Q">
+<defs>
+<linearGradient id="qr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFC21A"/><stop offset=".55" stop-color="#FF6A00"/><stop offset="1" stop-color="#FF2E88"/></linearGradient>
+<radialGradient id="qg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".3" stop-color="#FFC21A"/><stop offset=".7" stop-color="#FF2E88" stop-opacity=".35"/><stop offset="1" stop-color="#FF2E88" stop-opacity="0"/></radialGradient>
+</defs>
+<circle cx="285" cy="285" r="240" fill="#FFFFFF"/>
+<path d="M395 395 L520 520" stroke="#FFFFFF" stroke-width="112" stroke-linecap="round"/>
+<circle cx="285" cy="285" r="220" fill="#000000"/>
+<circle cx="285" cy="285" r="150" fill="url(#qg)"/>
+<path d="M285 140 V232 M285 338 V430" stroke="#7A3DFF" stroke-width="10" stroke-linecap="round"/>
+<ellipse cx="285" cy="285" rx="124" ry="32" fill="none" stroke="#FFC21A" stroke-width="13"/>
+<circle cx="285" cy="285" r="42" fill="#000000" stroke="#FFFFFF" stroke-width="5"/>
+<circle cx="285" cy="285" r="186" fill="none" stroke="url(#qr)" stroke-width="64"/>
+<path d="M398 398 L516 516" stroke="#FF2E88" stroke-width="64" stroke-linecap="round"/>
+<path d="M412 412 L500 500" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity=".5"/>
+</svg><em>Q monogram</em></div>
+    <div class="stk" data-a style="--i:5;--r:7deg"><svg viewBox="0 0 600 600" role="img" aria-label="Embroidered shield patch: the Quasar mark over the words Quasar Lab, MIT 2018">
+<path d="M300 40 L520 108 V300 Q520 468 300 562 Q80 468 80 300 V108 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="30" stroke-linejoin="round"/>
+<path d="M300 40 L520 108 V300 Q520 468 300 562 Q80 468 80 300 V108 Z" fill="#1E2A5A" stroke="#C4441A" stroke-width="16" stroke-linejoin="round"/>
+<path d="M300 70 L494 130 V300 Q494 448 300 532 Q106 448 106 300 V130 Z" fill="none" stroke="#F4EAD8" stroke-width="4" stroke-dasharray="12 9" stroke-linejoin="round"/>
+<g transform="translate(300 232)">
+<circle r="96" fill="#FFB347" opacity=".18"/>
+<path d="M0 -112 V-48 M0 48 V112" stroke="#A98BFF" stroke-width="10" stroke-linecap="round"/>
+<ellipse rx="112" ry="32" fill="none" stroke="#FFB347" stroke-width="15"/>
+<circle r="36" fill="#050307" stroke="#FFE2A8" stroke-width="6"/>
+</g>
+<text x="300" y="410" text-anchor="middle" font-family="Unbounded, Arial, sans-serif" font-weight="900" font-size="66" letter-spacing="2" fill="#F4EAD8">QUASAR</text>
+<text x="300" y="456" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="700" font-size="22" letter-spacing="7" fill="#FFB347">LAB Â· MIT 2018</text>
+</svg><em>Patch</em></div>
+    <div class="stk" data-a style="--i:6;--r:4deg"><svg viewBox="0 0 600 600" role="img" aria-label="Mascot sticker: a smiling little black hole with a golden orbit ring like a hula hoop and two violet jet antennae">
+<g stroke="#FFFFFF" stroke-linecap="round" fill="#FFFFFF">
+<path d="M300 160 V52" stroke-width="58"/>
+<circle cx="300" cy="44" r="40" stroke="none"/>
+<circle cx="300" cy="330" r="196" stroke="none"/>
+<g transform="rotate(-12 300 340)"><ellipse cx="300" cy="340" rx="256" ry="66" fill="none" stroke-width="72"/></g>
+</g>
+<path d="M300 160 V60" stroke="#A98BFF" stroke-width="16" stroke-linecap="round"/>
+<circle cx="300" cy="46" r="20" fill="#FFE2A8" stroke="#FFB347" stroke-width="6"/>
+<g transform="rotate(-12 300 340)"><path d="M44 340 A256 66 0 0 1 556 340" fill="none" stroke="#FF9A2E" stroke-width="28" stroke-linecap="round"/></g>
+<circle cx="300" cy="330" r="172" fill="#050307"/>
+<circle cx="300" cy="330" r="172" fill="none" stroke="#FFE2A8" stroke-width="7"/>
+<ellipse cx="248" cy="306" rx="36" ry="44" fill="#FFFFFF"/>
+<ellipse cx="352" cy="306" rx="36" ry="44" fill="#FFFFFF"/>
+<circle cx="256" cy="296" r="18" fill="#050307"/>
+<circle cx="360" cy="296" r="18" fill="#050307"/>
+<circle cx="262" cy="289" r="6" fill="#FFFFFF"/>
+<circle cx="366" cy="289" r="6" fill="#FFFFFF"/>
+<circle cx="214" cy="364" r="17" fill="#FF2E88" opacity=".8"/>
+<circle cx="386" cy="364" r="17" fill="#FF2E88" opacity=".8"/>
+<path d="M262 380 Q300 414 338 380" fill="none" stroke="#F4EAD8" stroke-width="10" stroke-linecap="round"/>
+<g transform="rotate(-12 300 340)"><path d="M556 340 A256 66 0 0 1 44 340" fill="none" stroke="#FFB347" stroke-width="30" stroke-linecap="round"/></g>
+</svg><em>Mascot</em></div>
+    <div class="stk" data-a style="--i:7;--r:-8deg"><svg viewBox="0 0 600 600" role="img" aria-label="Postage stamp sticker: a research plate of a quasar, marked 7D, Light from far away, The Quasar Lab, with an MIT 2018 postmark">
+<rect x="100" y="50" width="400" height="500" fill="#FFFFFF"/>
+<rect x="100" y="50" width="400" height="500" fill="none" stroke="#2A2233" stroke-width="20" stroke-dasharray="0 25" stroke-linecap="round"/>
+<rect x="128" y="78" width="344" height="444" fill="#EFE7DA"/>
+<rect x="140" y="90" width="320" height="420" fill="none" stroke="#C4441A" stroke-width="3"/>
+<text x="158" y="146" font-family="Unbounded, Arial, sans-serif" font-weight="900" font-size="46" fill="#C4441A">7D</text>
+<text x="158" y="174" font-family="JetBrains Mono, monospace" font-weight="700" font-size="14" letter-spacing="3" fill="#4A4350">LIGHT FROM FAR AWAY</text>
+<g transform="translate(300 310)" fill="none" stroke-linecap="round">
+<path d="M-150 0 H150" stroke="#14111A" stroke-width="1.5" opacity=".5"/>
+<ellipse rx="150" ry="40" stroke="#14111A" stroke-width="1.5" stroke-dasharray="4 6" opacity=".6"/>
+<ellipse rx="96" ry="26" stroke="#14111A" stroke-width="1.5" stroke-dasharray="4 6" opacity=".6"/>
+<path d="M0 -110 V-36 M0 36 V110" stroke="#34509E" stroke-width="5"/>
+<ellipse rx="122" ry="32" stroke="#C4441A" stroke-width="7"/>
+<circle r="30" fill="#14111A" stroke="none"/>
+<path d="M22 -22 L84 -80 H120" stroke="#14111A" stroke-width="2"/>
+</g>
+<text x="424" y="236" font-family="JetBrains Mono, monospace" font-weight="700" font-size="13" letter-spacing="2" fill="#4A4350">CORE</text>
+<text x="300" y="468" text-anchor="middle" font-family="Unbounded, Arial, sans-serif" font-weight="700" font-size="27" fill="#14111A">THE QUASAR LAB</text>
+<text x="300" y="494" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="700" font-size="13" letter-spacing="4" fill="#4A4350">RESEARCH + DESIGN</text>
+<g transform="translate(468 126)" opacity=".62" fill="none" stroke="#14111A">
+<circle r="58" stroke-width="4"/>
+<circle r="46" stroke-width="2"/>
+<path d="M-150 -18 q15 -10 30 0 t30 0 t30 0 t30 0 M-150 0 q15 -10 30 0 t30 0 t30 0 t30 0 M-150 18 q15 -10 30 0 t30 0 t30 0 t30 0" stroke-width="3"/>
+</g>
+<text x="468" y="128" text-anchor="middle" font-family="Unbounded, Arial, sans-serif" font-weight="800" font-size="22" fill="#14111A" opacity=".62">MIT</text>
+<text x="468" y="150" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="700" font-size="13" letter-spacing="2" fill="#14111A" opacity=".62">2018</text>
+</svg><em>Postage stamp</em></div>
+    <div class="stk" data-a style="--i:8;--r:3deg"><svg viewBox="0 0 640 600" role="img" aria-label="Ticket sticker: Admit one into the light, The Quasar Lab, season 26 to 27, with a Quasar stub">
+<defs>
+<radialGradient id="tg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".35" stop-color="#FFC21A"/><stop offset="1" stop-color="#FF2E88" stop-opacity="0"/></radialGradient>
+</defs>
+<g transform="rotate(-7 320 300)">
+<path d="M80 170 H410 A22 22 0 0 0 454 170 H560 Q580 170 580 190 V410 Q580 430 560 430 H454 A22 22 0 0 0 410 430 H80 Q60 430 60 410 V190 Q60 170 80 170 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="30" stroke-linejoin="round"/>
+<path d="M80 170 H410 A22 22 0 0 0 454 170 H560 Q580 170 580 190 V410 Q580 430 560 430 H454 A22 22 0 0 0 410 430 H80 Q60 430 60 410 V190 Q60 170 80 170 Z" fill="#000000"/>
+<path d="M432 200 V400" stroke="#F4EAD8" stroke-width="3" stroke-dasharray="8 8" opacity=".6"/>
+<text x="92" y="222" font-family="JetBrains Mono, monospace" font-weight="700" font-size="15" letter-spacing="3" fill="#FF2E88">ADMIT ONE Â· THE QUASAR LAB</text>
+<text x="92" y="292" font-family="Unbounded, Arial, sans-serif" font-weight="800" font-size="50" fill="#F4EAD8">INTO THE</text>
+<text x="92" y="350" font-family="Unbounded, Arial, sans-serif" font-weight="800" font-size="50" fill="#FFC21A">LIGHT</text>
+<text x="92" y="400" font-family="JetBrains Mono, monospace" font-weight="700" font-size="14" letter-spacing="3" fill="#B6ABC2">â„– 0001 Â· SEASON 26/27</text>
+<g transform="translate(506 300)">
+<circle r="62" fill="url(#tg)" opacity=".7"/>
+<path d="M0 -78 V-26 M0 26 V78" stroke="#7A3DFF" stroke-width="6" stroke-linecap="round"/>
+<ellipse rx="54" ry="15" fill="none" stroke="#FFC21A" stroke-width="7"/>
+<circle r="17" fill="#000000" stroke="#FFFFFF" stroke-width="3"/>
+</g>
+</g>
+</svg><em>Ticket</em></div>
+    <div class="stk" data-a style="--i:9;--r:-5deg"><svg viewBox="0 0 600 600" role="img" aria-label="Die-cut wordmark sticker: QUASAR LAB in heavy gold letters with the mark above">
+<defs>
+<linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE2A8"/><stop offset=".5" stop-color="#FFB347"/><stop offset="1" stop-color="#FF7A1A"/></linearGradient>
+<radialGradient id="wm" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFF3D6"/><stop offset=".4" stop-color="#FFB347"/><stop offset="1" stop-color="#FF5A1F" stop-opacity="0"/></radialGradient>
+</defs>
+<g fill="#FFFFFF" stroke="#FFFFFF" stroke-width="44" stroke-linejoin="round" font-family="Unbounded, Arial, sans-serif" font-weight="900" font-size="116" text-anchor="middle">
+<circle cx="300" cy="150" r="96" stroke="none"/>
+<text x="300" y="350" textLength="540" lengthAdjust="spacingAndGlyphs">QUASAR</text>
+<text x="300" y="478" textLength="270" lengthAdjust="spacingAndGlyphs">LAB</text>
+</g>
+<circle cx="300" cy="150" r="80" fill="#050307"/>
+<circle cx="300" cy="150" r="72" fill="url(#wm)" opacity=".8"/>
+<path d="M300 72 V118 M300 182 V228" stroke="#A98BFF" stroke-width="8" stroke-linecap="round"/>
+<ellipse cx="300" cy="150" rx="76" ry="21" fill="none" stroke="#FFB347" stroke-width="10"/>
+<circle cx="300" cy="150" r="24" fill="#050307" stroke="#FFE2A8" stroke-width="4"/>
+<g fill="url(#wg)" stroke="#050307" stroke-width="10" stroke-linejoin="round" paint-order="stroke" font-family="Unbounded, Arial, sans-serif" font-weight="900" font-size="116" text-anchor="middle">
+<text x="300" y="350" textLength="540" lengthAdjust="spacingAndGlyphs">QUASAR</text>
+<text x="300" y="478" textLength="270" lengthAdjust="spacingAndGlyphs">LAB</text>
+</g>
+</svg><em>Wordmark</em></div>
+  </div>
+</section>
+
+<!-- 09 FORMAL -->
+<section class="s t-paper" id="s-formal" data-ch="Identity" data-title="And one for the boardroom" data-note="Quieter marks for universities, funders and partners: gold foil, blind emboss, engraved brass. Built on real scientific conventions.">
+  <div class="top-t"><div><p class="kick" data-a>Formal marks</p><h2 class="h2" data-a style="--i:1;margin-top:20px">Quieter marks<br>for funders.</h2></div><p class="kick" data-a style="--i:2">Foil, blind emboss, brass</p></div>
+  <div class="formal">
+    <figure data-a style="--i:2"><svg viewBox="0 0 600 600" role="img" aria-label="Astrolabe mark in gold hairlines: degree ring, crosshair, two orbits and a core, with The Quasar Lab set in spaced serif capitals">
+<defs><path id="aa" d="M300,300 m-206,0 a206,206 0 1,1 412,0"/></defs>
+<g fill="none" stroke="#D9B26A">
+<circle cx="300" cy="300" r="262" stroke-width="1.5"/>
+<circle cx="300" cy="300" r="252" stroke-width=".7"/>
+<circle cx="300" cy="300" r="245" stroke-width="12" stroke-dasharray="1 20.38" opacity=".8"/>
+<circle cx="300" cy="300" r="243" stroke-width="20" stroke-dasharray="1.6 125.64"/>
+<circle cx="300" cy="300" r="232" stroke-width=".7"/>
+<circle cx="300" cy="300" r="168" stroke-width=".7"/>
+<path d="M300 76 V524 M76 300 H524" stroke-width=".6" opacity=".55"/>
+<ellipse cx="300" cy="300" rx="150" ry="40" stroke-width="1.6"/>
+<ellipse cx="300" cy="300" rx="150" ry="40" stroke-width=".7" opacity=".55" transform="rotate(60 300 300)"/>
+<ellipse cx="300" cy="300" rx="150" ry="40" stroke-width=".7" opacity=".55" transform="rotate(-60 300 300)"/>
+<path d="M300 186 V262 M300 338 V414" stroke="#B9A6FF" stroke-width="1.4" stroke-linecap="round"/>
+<circle cx="300" cy="300" r="26" fill="#0B1020" stroke-width="1.6"/>
+</g>
+<circle cx="300" cy="300" r="5" fill="#D9B26A"/>
+<text font-family="'Cormorant Garamond', Georgia, serif" font-weight="600" font-size="27" letter-spacing="9" fill="#E8CF9A"><textPath href="#aa" startOffset="50%" text-anchor="middle">THE QUASAR LAB</textPath></text>
+<text x="300" y="486" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="500" font-size="12" letter-spacing="6" fill="#D9B26A">MIT Â· MMXVIII</text>
+</svg><figcaption>Astrolabe</figcaption></figure>
+    <figure data-a style="--i:3"><svg viewBox="0 0 600 600" role="img" aria-label="Hairline lockup: a thin orbit and a small black core above Quasar Lab in serif italic, research and design, established 2018">
+<g fill="none" stroke-linecap="round">
+<path d="M300 150 V226 M300 294 V370" stroke="#A0742A" stroke-width="1.4"/>
+<ellipse cx="300" cy="260" rx="132" ry="32" stroke="#14111A" stroke-width="1.8"/>
+<circle cx="300" cy="260" r="16" fill="#14111A" stroke="none"/>
+<circle cx="300" cy="260" r="22" stroke="#A0742A" stroke-width="1"/>
+</g>
+<text x="300" y="468" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-style="italic" font-weight="500" font-size="78" fill="#14111A">Quasar Lab</text>
+<path d="M210 492 H390" stroke="#A0742A" stroke-width="1"/>
+<text x="300" y="522" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="500" font-size="12" letter-spacing="5" fill="#4A4350">RESEARCH &amp; DESIGN Â· EST. 2018</text>
+</svg><figcaption>Hairline</figcaption></figure>
+    <figure data-a style="--i:4"><svg viewBox="0 0 600 600" role="img" aria-label="Periodic table tile: element Qs, Quasar, number 7, 2018, light from far away, with a red orbit behind the symbol">
+<rect x="140" y="110" width="320" height="380" fill="#FFFBF4" stroke="#14111A" stroke-width="3"/>
+<ellipse cx="300" cy="300" rx="188" ry="44" fill="none" stroke="#C4441A" stroke-width="2.5" transform="rotate(-14 300 300)"/>
+<text x="166" y="160" font-family="JetBrains Mono, monospace" font-weight="700" font-size="28" fill="#14111A">7</text>
+<text x="434" y="156" text-anchor="end" font-family="JetBrains Mono, monospace" font-weight="500" font-size="17" fill="#4A4350">2018</text>
+<text x="300" y="352" text-anchor="middle" font-family="'Space Grotesk', Arial, sans-serif" font-weight="600" font-size="176" letter-spacing="-4" fill="#14111A">Qs</text>
+<circle cx="254" cy="290" r="9" fill="#C4441A"/>
+<text x="300" y="412" text-anchor="middle" font-family="'Space Grotesk', Arial, sans-serif" font-weight="500" font-size="32" fill="#14111A">Quasar</text>
+<text x="300" y="460" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="500" font-size="12" letter-spacing="4" fill="#4A4350">LIGHT FROM FAR AWAY</text>
+<text x="300" y="530" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="700" font-size="13" letter-spacing="6" fill="#14111A">THE QUASAR LAB</text>
+</svg><figcaption>Element 7</figcaption></figure>
+    <figure data-a style="--i:5"><svg viewBox="0 0 600 600" role="img" aria-label="Emission spectrum mark: The Quasar Lab in spaced letters above a black spectrum bar with thin colored emission lines, labeled 3C 273, z equals 0.158">
+<g fill="none" stroke-linecap="round">
+<path d="M300 132 V166 M300 206 V240" stroke="#A98BFF" stroke-width="1.4"/>
+<ellipse cx="300" cy="186" rx="70" ry="17" stroke="#FFB347" stroke-width="1.8"/>
+<circle cx="300" cy="186" r="10" fill="#050307" stroke="#FFE2A8" stroke-width="1.4"/>
+</g>
+<text x="300" y="300" text-anchor="middle" font-family="'Space Grotesk', Arial, sans-serif" font-weight="500" font-size="32" letter-spacing="13" fill="#F4EAD8">THE QUASAR LAB</text>
+<rect x="80" y="336" width="440" height="72" fill="#000000" stroke="#F4EAD8" stroke-width=".8" stroke-opacity=".5"/>
+<g stroke-width="2">
+<path d="M128 336 V408" stroke="#7A3DFF"/>
+<path d="M156 336 V408" stroke="#4D7CFF"/>
+<path d="M200 336 V408" stroke="#4D7CFF" stroke-width="3.5"/>
+<path d="M262 336 V408" stroke="#00E5FF"/>
+<path d="M326 336 V408" stroke="#C8FF1F" stroke-width="1.4"/>
+<path d="M352 336 V408" stroke="#FFC21A" stroke-width="2.6"/>
+<path d="M404 336 V408" stroke="#FF7A1A"/>
+<path d="M462 336 V408" stroke="#FF2E88" stroke-width="5"/>
+</g>
+<path d="M80 420 V428 M190 420 V428 M300 420 V428 M410 420 V428 M520 420 V428" stroke="#857985" stroke-width="1"/>
+<text x="80" y="452" font-family="JetBrains Mono, monospace" font-weight="500" font-size="11" letter-spacing="2" fill="#857985">400 NM</text>
+<text x="520" y="452" text-anchor="end" font-family="JetBrains Mono, monospace" font-weight="500" font-size="11" letter-spacing="2" fill="#857985">700 NM</text>
+<text x="300" y="496" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" letter-spacing="5" fill="#FFB347">3C 273 Â· Z = 0.158</text>
+</svg><figcaption>Spectrum, 3C 273</figcaption></figure>
+    <figure data-a style="--i:6"><svg viewBox="0 0 600 600" role="img" aria-label="Blind-embossed crest on cream paper: a serif italic Q crossed by an orbit, ringed by The Quasar Lab, research and design, MMXVIII">
+<defs>
+<path id="ca" d="M300,300 m-196,0 a196,196 0 1,1 392,0 a196,196 0 1,1 -392,0"/>
+<g id="cr" fill="none" stroke="currentColor">
+<circle cx="300" cy="300" r="236" stroke-width="3"/>
+<circle cx="300" cy="300" r="226" stroke-width="1.2"/>
+<circle cx="300" cy="300" r="160" stroke-width="1.2"/>
+<text x="300" y="368" text-anchor="middle" stroke="none" fill="currentColor" font-family="'Cormorant Garamond', Georgia, serif" font-style="italic" font-weight="600" font-size="210">Q</text>
+<ellipse cx="300" cy="300" rx="148" ry="34" stroke-width="3" transform="rotate(-18 300 300)"/>
+<text stroke="none" fill="currentColor" font-family="'Cormorant Garamond', Georgia, serif" font-weight="600" font-size="25" letter-spacing="7"><textPath href="#ca" textLength="1200" lengthAdjust="spacing">THE QUASAR LAB Â· RESEARCH AND DESIGN Â· MMXVIII Â·</textPath></text>
+</g>
+</defs>
+<use href="#cr" x="-2" y="-2" color="#FFFFFF" opacity=".85"/>
+<use href="#cr" x="2" y="2" color="#6E5F4A" opacity=".45"/>
+<use href="#cr" color="#E3D9C7"/>
+</svg><figcaption>Crest</figcaption></figure>
+  </div>
+</section>
+
+<!-- 10 PALETTE -->
+<section class="s t-void" id="s-pal" data-ch="System" data-title="Every color comes from the mark" data-note="Black core, cream light, the disk from Halo to Ember, violet and electric jets. Click any color to copy its hex.">
+  <div class="pal" id="pal"></div>
+  <div class="pal-t"><p class="kick" data-a>Core palette (click a color to copy)</p><h2 class="h2" data-a style="--i:1;margin-top:20px">All eight are pulled<br>from the symbol.</h2></div>
+</section>
+
+<!-- 11 TYPE -->
+<section class="s t-gold" id="s-type" data-ch="System" data-title="Type that shouts. Type that cites." data-note="Unbounded shouts, Space Grotesk reads, JetBrains Mono labels. Type a headline from the room.">
+  <div class="ty">
+    <p class="kick" data-a>Typography (click the line and type)</p>
+    <div class="live" contenteditable="true" spellcheck="false" data-a style="--i:1" id="typeLive">Become the brightest light</div>
+    <div class="fam" data-a style="--i:2">
+      <div><strong style="font-family:var(--f-d);font-weight:800">Aa</strong><p>Unbounded<span>Headlines</span></p></div>
+      <div><strong style="font-family:var(--f-t);font-weight:500">Aa</strong><p>Space Grotesk<span>Reading</span></p></div>
+      <div><strong style="font-family:var(--f-m);font-weight:500">Aa</strong><p>JetBrains Mono<span>Labels and data</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 ILLUSTRATION -->
+<section class="s t-black" id="s-ill" data-ch="System" data-title="Same geometry. Three temperatures." data-note="Each figure ships as paper, dark plate and party. The geometry never moves.">
+  <div class="ill" id="ill" data-a="fade" style="--i:1">
+    <img class="on" src="img/illustration-seven-research.jpg" alt="The Seventh Dimension, paper" width="1600" height="1200">
+    <img src="img/illustration-dbh-research-dark.jpg" alt="Data Black Hole, dark plate" width="1600" height="1200">
+    <img src="img/illustration-dancefloor-party.jpg" alt="The dancefloor, party" width="1600" height="1200">
+    <img src="img/illustration-lasers-party.jpg" alt="Jets over the crowd, party" width="1600" height="1200">
+  </div>
+  <div class="ill-t">
+    <div><p class="kick" data-a>Illustration</p><h2 class="h3" data-a style="--i:1;margin-top:24px">Each figure ships in a paper, a dark and a party version.</h2></div>
+    <div class="chips" id="illChips" data-a style="--i:2"><button class="chip on">Seventh Dimension<i>Paper</i></button><button class="chip">Data Black Hole<i>Dark</i></button><button class="chip">Dancefloor<i>Party</i></button><button class="chip">Jets over the crowd<i>Party</i></button></div>
+  </div>
+</section>
+
+<!-- 13 KIT -->
+<section class="s t-void" id="s-kit" data-ch="Applications" data-title="One decision. Every format." data-note="Pick the event and the register; announcement, story, speaker card and post all follow from one source.">
+  <div class="glow" style="--gx:68%;--gy:60%;opacity:.5"></div>
+  <div class="lt"><div><p class="kick" data-a>Content kit</p><h2 class="h2" data-a style="--i:1;margin-top:24px">Pick the event once, <span class="key">the kit follows.</span></h2></div><p class="kick" data-a style="--i:2">4:5, 9:16, 16:9, print</p></div>
+  <div class="kit">
+    <figure class="k1" data-a style="--i:2"><img src="img/kit-uxr-announce-party.jpg" alt="Announcement, party 4:5" width="1080" height="1350"></figure>
+    <figure class="k2" data-a style="--i:3"><img src="img/kit-uxr-story-party.jpg" alt="Story, party 9:16" width="900" height="1600"></figure>
+    <figure class="k3" data-a style="--i:4"><img src="img/kit-uxr-speaker-party.jpg" alt="Speaker card, party" width="1080" height="1350"></figure>
+    <figure class="k4" data-a style="--i:5"><img src="img/post-45-research.jpg" alt="Post, research" width="1080" height="1350"></figure>
+  </div>
+</section>
+
+<!-- 14 BOOTH -->
+<section class="s t-black" id="s-booth" data-ch="Applications" data-title="Brussels, December 7–9" data-note="UnitedXR Europe booth kit. Switch to scale so the room feels the wall next to a person.">
+  <div class="top-t"><div><p class="kick" data-a>Booth, UnitedXR Europe</p><h2 class="h2" data-a style="--i:1;margin-top:20px">Brussels, <span class="key">7–9 December</span></h2></div><div class="chips" id="boothChips" data-a style="--i:2"><button class="chip on">Plates</button><button class="chip">To scale</button></div></div>
+  <div class="booth-floor"></div>
+  <div class="booth" id="booth">
+    <figure class="ru" data-a style="--i:2"><img src="img/rollup-research.jpg" alt="Roll-up, research" width="680" height="1600"></figure>
+    <figure class="bw" data-a style="--i:3"><img src="img/backwall-party.jpg" alt="Back wall, party" width="1600" height="1280"></figure>
+    <figure class="ru" data-a style="--i:4"><img src="img/rollup-party.jpg" alt="Roll-up, party" width="680" height="1600"></figure>
+    <figure class="ps" aria-label="Person, 1.7 m"><svg viewBox="0 0 60 170" role="img" aria-label="Person, 1.7 m"><circle cx="30" cy="13" r="12"/><path d="M30 25V100M30 40L8 78M30 40L52 78M30 100L14 168M30 100L46 168"/></svg></figure>
+  </div>
+</section>
+
+<!-- 15 KEEP -->
+<section class="s t-void" id="s-keep" data-ch="Applications" data-title="Things people keep" data-note="The party register lives on objects. Pins are the long-lead item. Hover a pin to spin it.">
+  <div class="top-t"><div><p class="kick" data-a>Souvenirs</p><h2 class="h2" data-a style="--i:1;margin-top:20px">Stuff people take home.</h2></div></div>
+  <div class="keep">
+    <figure data-a style="--i:2"><div class="coin"><img src="img/pin-mark-gold-art.png" alt="Pin, the mark" width="300" height="300"></div><figcaption>Pin, symbol</figcaption></figure>
+    <figure data-a style="--i:3"><div class="coin"><img src="img/pin-designed-for-gold-art.png" alt="Pin, Designed For" width="600" height="600"></div><figcaption>Pin, Designed For</figcaption></figure>
+    <figure data-a style="--i:4"><div class="coin"><img src="img/pin-7d-gold-art.png" alt="Pin, 7D orbit" width="300" height="300"></div><figcaption>Pin, 7D orbit</figcaption></figure>
+    <figure data-a style="--i:5"><div class="coin"><img src="img/pin-afterparty-26-gold-art.png" alt="Pin, Afterparty BRU 26" width="300" height="300"></div><figcaption>Pin, BRU 26</figcaption></figure>
+    <figure data-a style="--i:6"><div class="st" style="--r:-6deg"><img src="img/sticker-brightest.png" alt="Sticker, Become the brightest light" width="640" height="640"></div><figcaption>Sticker</figcaption></figure>
+    <figure data-a style="--i:7"><div class="st" style="--r:6deg"><img src="img/sticker-event-horizon.png" alt="Sticker, I survived the event horizon" width="640" height="640"></div><figcaption>Sticker</figcaption></figure>
+  </div>
+  <div class="keep-b"><p class="lede" data-a style="--i:8">The same sticker art exports for <span style="color:var(--cream)">WhatsApp, Discord and Slack.</span></p></div>
+</section>
+
+<!-- 16 WEAR -->
+<section class="s t-black" id="s-wear" data-ch="Applications" data-title="Wear the light" data-note="Badges generated from the team list, lab IDs on CR80, the crossed line on a tote.">
+  <div class="lt"><div><p class="kick" data-a>Credentials</p><h2 class="h2" data-a style="--i:1;margin-top:24px">Badges, lab IDs, <span class="key">the tote.</span></h2></div><p class="kick" data-a style="--i:2">Badges print from the team list</p></div>
+  <div class="wear">
+    <div class="tilt bd" data-a style="--i:2"><img src="img/badge-uxr-party-001-speaker.jpg" alt="Speaker badge" width="1016" height="1524"></div>
+    <div style="display:flex;flex-direction:column;gap:30px">
+      <div class="tilt id" data-a style="--i:3"><img src="img/id-card-party-01.jpg" alt="Lab ID, party" width="540" height="856"></div>
+    </div>
+    <div class="tilt tt" data-a style="--i:4"><img src="img/tote-crossed-void-ink.jpg" alt="Tote with the crossed line" width="1493" height="1600"></div>
+  </div>
+</section>
+
+<!-- 17 SEASON -->
+<section class="s t-void" id="s-season" data-ch="Events" data-title="One season. Three stages." data-note="Brussels opens the season with party. MIT Reality Hack is the homecoming in research. Sundance runs on the core palette.">
+  <div class="top-t"><div><p class="kick" data-a>The season</p><h2 class="h3" data-a style="--i:1;margin-top:20px">Brussels, then MIT, then Sundance.</h2></div></div>
+  <div class="season">
+    <div class="ev" data-a style="--i:2;--g:rgba(255,46,136,.55)"><div class="pv"><svg viewBox="0 0 440 550" role="img" aria-label="Poster: two black holes with pink and cyan disks colliding in a white flash, titled Worlds Collide">
+<defs><radialGradient id="ux" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".25" stop-color="#FFC21A" stop-opacity=".8"/><stop offset=".6" stop-color="#FF2E88" stop-opacity=".25"/><stop offset="1" stop-color="#FF2E88" stop-opacity="0"/></radialGradient></defs>
+<rect width="440" height="550" fill="#000000"/>
+<g fill="#F4EAD8" opacity=".6"><circle cx="40" cy="90" r="1.5"/><circle cx="390" cy="120" r="1.2"/><circle cx="360" cy="380" r="1.5"/><circle cx="70" cy="360" r="1"/><circle cx="410" cy="300" r="1"/><circle cx="120" cy="60" r="1"/></g>
+<circle cx="226" cy="248" r="200" fill="url(#ux)"/>
+<g transform="rotate(-18 150 272)"><path d="M150 160 V242 M150 302 V384" stroke="#7A3DFF" stroke-width="5" stroke-linecap="round"/><ellipse cx="150" cy="272" rx="122" ry="30" fill="none" stroke="#FF2E88" stroke-width="10"/><circle cx="150" cy="272" r="30" fill="#000000" stroke="#FFFFFF" stroke-width="3"/></g>
+<g transform="rotate(22 300 220)"><path d="M300 130 V196 M300 244 V310" stroke="#7A3DFF" stroke-width="5" stroke-linecap="round"/><ellipse cx="300" cy="220" rx="100" ry="25" fill="none" stroke="#00E5FF" stroke-width="9"/><circle cx="300" cy="220" r="24" fill="#000000" stroke="#FFFFFF" stroke-width="3"/></g>
+<path d="M178 262 Q228 214 280 230" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".8"/>
+<text x="32" y="46" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" letter-spacing="1.5" fill="#F4EAD8">REALITY HACK AFTERPARTY</text>
+<text x="408" y="46" text-anchor="end" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" letter-spacing="1.5" fill="#C8FF1F">BRU Â· 12.08.26</text>
+<text x="32" y="448" font-family="Unbounded, Arial, sans-serif" font-weight="900" font-size="62" fill="#F4EAD8">WORLDS</text>
+<text x="32" y="512" font-family="Unbounded, Arial, sans-serif" font-weight="900" font-size="62" fill="#FF2E88" data-accent="1">COLLIDE</text>
+</svg></div><div class="m"><b>Brussels</b><span style="color:var(--plasma)">Dec 2026, party</span></div></div>
+    <div class="ev" data-a style="--i:3;--g:rgba(77,124,255,.55)"><div class="pv"><svg viewBox="0 0 440 550" role="img" aria-label="Poster: seven numbered dashed orbits around a black core on graph paper, titled Hack the 7th Dimension">
+<defs><pattern id="gp" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0 H0 V20" fill="none" stroke="#34509E" stroke-width=".6" opacity=".25"/></pattern></defs>
+<rect width="440" height="550" fill="#F6F0E5"/>
+<rect width="440" height="550" fill="url(#gp)"/>
+<rect x="14" y="14" width="412" height="522" fill="none" stroke="#14111A" stroke-width="2"/>
+<text x="32" y="48" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" letter-spacing="3" fill="#14111A">MIT REALITY HACK Â· CAMBRIDGE Â· 2027</text>
+<g transform="translate(206 250)" fill="none">
+<path d="M0 -150 V-24 M0 24 V150" stroke="#34509E" stroke-width="3" stroke-linecap="round"/>
+<ellipse rx="34" ry="10" stroke="#14111A" stroke-width="1.5" stroke-dasharray="3 4"/>
+<ellipse rx="58" ry="17" stroke="#34509E" stroke-width="1.5" stroke-dasharray="3 4"/>
+<ellipse rx="82" ry="24" stroke="#14111A" stroke-width="1.5" stroke-dasharray="3 4"/>
+<ellipse rx="106" ry="31" stroke="#34509E" stroke-width="1.5" stroke-dasharray="3 4"/>
+<ellipse rx="130" ry="38" stroke="#14111A" stroke-width="1.5" stroke-dasharray="3 4"/>
+<ellipse rx="154" ry="45" stroke="#34509E" stroke-width="1.5" stroke-dasharray="3 4"/>
+<ellipse rx="178" ry="52" stroke="#C4441A" stroke-width="4"/>
+<circle r="18" fill="#14111A"/>
+</g>
+<g font-family="JetBrains Mono, monospace" font-weight="700" font-size="11" fill="#14111A"><text x="244" y="246">1</text><text x="268" y="246">2</text><text x="292" y="246">3</text><text x="316" y="246">4</text><text x="340" y="246">5</text><text x="364" y="246">6</text><text x="388" y="246" fill="#C4441A">7</text></g>
+<path d="M352 132 Q330 160 290 196" fill="none" stroke="#C4441A" stroke-width="2.5"/>
+<path d="M290 196 l12 -2 M290 196 l2 -12" stroke="#C4441A" stroke-width="2.5" stroke-linecap="round"/>
+<text x="262" y="122" font-family="JetBrains Mono, monospace" font-weight="700" font-size="11" letter-spacing="2" fill="#C4441A">FIG. 07 Â· AFFECT</text>
+<text x="32" y="452" font-family="Unbounded, Arial, sans-serif" font-weight="800" font-size="33" fill="#14111A">HACK THE</text>
+<text x="32" y="502" font-family="Unbounded, Arial, sans-serif" font-weight="800" font-size="33" fill="#34509E" data-accent="1">7TH DIMENSION</text>
+</svg></div><div class="m"><b>MIT</b><span style="color:var(--electric)">Jan 2027, research</span></div></div>
+    <div class="ev" data-a style="--i:4;--g:rgba(255,179,71,.55)"><div class="pv"><svg viewBox="0 0 440 550" role="img" aria-label="Poster: a black hole rising like a golden sun over slanted mountain slabs, framed by film perforations, titled Light from Far Away">
+<defs>
+<linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B0A14"/><stop offset=".7" stop-color="#3A1E2A"/><stop offset="1" stop-color="#7A3A1A"/></linearGradient>
+<radialGradient id="sh" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFF3D6"/><stop offset=".3" stop-color="#FFB347" stop-opacity=".85"/><stop offset=".7" stop-color="#FF5A1F" stop-opacity=".2"/><stop offset="1" stop-color="#FF5A1F" stop-opacity="0"/></radialGradient>
+<pattern id="pf" width="20" height="30" patternUnits="userSpaceOnUse"><rect x="5" y="8" width="10" height="14" rx="3" fill="#F4EAD8" opacity=".85"/></pattern>
+</defs>
+<rect width="440" height="550" fill="#050307"/>
+<rect x="30" y="0" width="380" height="410" fill="url(#sk)"/>
+<g fill="#F4EAD8" opacity=".7"><circle cx="80" cy="60" r="1.4"/><circle cx="350" cy="90" r="1.2"/><circle cx="300" cy="40" r="1"/><circle cx="130" cy="140" r="1"/><circle cx="380" cy="190" r="1.3"/></g>
+<circle cx="220" cy="270" r="170" fill="url(#sh)"/>
+<path d="M220 150 V242 M220 298 V340" stroke="#A98BFF" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="220" cy="270" rx="118" ry="22" fill="none" stroke="#FFB347" stroke-width="8"/>
+<circle cx="220" cy="270" r="30" fill="#050307" stroke="#FFE2A8" stroke-width="3"/>
+<polygon points="30,410 30,360 92,300 132,410" fill="#120E18"/>
+<polygon points="96,410 160,290 206,330 236,410" fill="#0B0A14"/>
+<polygon points="200,410 262,312 300,340 336,410" fill="#120E18"/>
+<polygon points="300,410 352,330 410,372 410,410" fill="#0B0A14"/>
+<rect x="0" y="0" width="30" height="550" fill="#050307"/><rect x="410" y="0" width="30" height="550" fill="#050307"/>
+<rect x="5" y="0" width="20" height="550" fill="url(#pf)"/><rect x="415" y="0" width="20" height="550" fill="url(#pf)"/>
+<text x="48" y="40" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" letter-spacing="3" fill="#F4EAD8">BOULDER Â· 2027</text>
+<text x="392" y="40" text-anchor="end" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" letter-spacing="3" fill="#FFB347">FRAME 0001</text>
+<text x="48" y="468" font-family="Unbounded, Arial, sans-serif" font-weight="800" font-size="40" fill="#F4EAD8">LIGHT FROM</text>
+<text x="48" y="516" font-family="Unbounded, Arial, sans-serif" font-weight="800" font-size="40" fill="#FFB347" data-accent="1">FAR AWAY</text>
+</svg></div><div class="m"><b>Sundance</b><span style="color:var(--gold)">Jan 2027, core</span></div></div>
+  </div>
+</section>
+
+<!-- 18 WEB -->
+<section class="s t-black" id="s-web" data-ch="Website" data-title="The identity, in space" data-note="One black hole holds the screen while visitors move through seven chapters. Every visit ends on Arrival: partner, sponsor, fund.">
+  <div class="chap"><p class="kick" data-a>Website, seven chapters</p><h2 class="h3" data-a style="--i:1;margin-top:20px">The black hole stays on screen while you scroll.</h2>
+    <ol id="chapList" data-a style="--i:2"></ol></div>
+  <div class="web" data-a style="--i:2"><div class="browser"><div class="bar"><i></i><i></i><i></i></div><div class="scr" id="webScr"><img class="on" src="img/site1.jpg" alt="Website, Data Black Holes" width="1600" height="1000"><img src="img/site3.jpg" alt="Website, Origin" width="1600" height="1000"></div></div></div>
+  <p class="chap-line" id="chapLine" style="left:auto;right:112px;width:980px;bottom:150px;text-align:left"></p>
+</section>
+
+<!-- 19 CLOSE -->
+<section class="s t-void" id="s-close" data-ch="The Quasar Lab" data-title="Become the brightest light." data-note="Close on the line the system is built to say. Then take questions.">
+  <div class="glow"></div>
+  <svg class="qm" id="closeMark" viewBox="-500 -500 1000 1000" aria-hidden="true"></svg>
+  <div class="close-t"><h2 class="h1" data-a>Become the brightest light.</h2><p class="kick" data-a style="--i:1">The Quasar Lab, 2026</p></div>
+</section>
+
+</main></div>
+
+<div id="hud">
+  <button id="brand" aria-label="Go to first slide"><svg viewBox="0 0 40 40"><path d="M20 3v9M20 28v9" stroke="#A98BFF" stroke-width="2.4" stroke-linecap="round"/><ellipse cx="20" cy="20" rx="16" ry="5" fill="none" stroke="#FFB347" stroke-width="2.6"/><circle cx="20" cy="20" r="5" fill="#050307" stroke="#FFE2A8" stroke-width="1.2"/></svg>The Quasar Lab</button>
+  <div id="chap"></div>
+  <div id="count"><b id="cn">01</b> / <span id="ct">19</span></div>
+  <div id="ctrl">
+    <button id="bOv" aria-label="Overview (G)" title="Overview (G)"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><rect x="14" y="14" width="6" height="6"/></svg></button>
+    <button id="bFs" aria-label="Full screen (F)" title="Full screen (F)"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    <button id="bPrev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button id="bNext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+</div>
+<div id="bar"></div>
+<div id="toast"></div>
+<div id="notes"><b>Notes (N)</b><span id="noteTx"></span></div>
+<div id="ov" role="dialog" aria-label="Overview"><h2>The Quasar Lab</h2><div id="ovg"></div></div>
+
+<script>
+(()=>{
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const stage=$('#stage'), deck=$('#deck'), slides=$$('.s');
+const N=slides.length; let cur=0;
+const themeBg={'t-void':'#050307','t-black':'#000','t-paper':'#EFE7DA','t-cream':'#F4EAD8','t-gold':'#FFB347'};
+const themeHud={'t-void':'#F4EAD8','t-black':'#F4EAD8','t-paper':'#14111A','t-cream':'#050307','t-gold':'#050307'};
+
+/* ---- scale ---- */
+function fit(){const w=innerWidth,h=innerHeight,k=Math.min(w/1920,h/1080);stage.style.transform=`translate(${(w-1920*k)/2}px,${(h-1080*k)/2}px) scale(${k})`;}
+addEventListener('resize',fit);fit();
+
+/* ---- the mark ---- */
+function mark(svg,{core=100,R=330,J=440,sw=46,jw=30,glow=true,orbit=false}={}){
+  svg.innerHTML=`<defs><radialGradient id="g_${svg.id}"><stop offset="0" stop-color="#FFE2A8" stop-opacity=".9"/><stop offset=".25" stop-color="#FFB347" stop-opacity=".55"/><stop offset=".55" stop-color="#C2185B" stop-opacity=".22"/><stop offset="1" stop-color="#7A3DFF" stop-opacity="0"/></radialGradient></defs>
+  <g data-p="glow">${glow?`<circle r="${R*1.15}" fill="url(#g_${svg.id})"/>`:''}${orbit?`<ellipse class="orbit o2" rx="${R*1.45}" stroke-width="3"/>`:''}</g>
+  <g class="rot">
+   <g data-p="jets"><path class="jetg" stroke-width="${jw*3.2}"/><path class="jet" stroke-width="${jw}"/></g>
+   <g data-p="disk"><path class="disk back" stroke-width="${sw}"/></g>
+   <g data-p="core"><circle class="core" r="${core}" stroke-width="${core*.13}"/></g>
+   <g data-p="disk"><path class="disk front" stroke-width="${sw}"/></g>
+  </g>`;
+  const rot=svg.querySelector('.rot'),back=svg.querySelector('.back'),front=svg.querySelector('.front'),jets=$$('.jet,.jetg',svg),o2=svg.querySelector('.o2');
+  const st={t:.22,r:-14,tt:.22,tr:-14};
+  function draw(){
+    const ry=Math.max(2,R*st.t);
+    back.setAttribute('d',`M${-R} 0 A${R} ${ry} 0 0 1 ${R} 0`);
+    front.setAttribute('d',`M${R} 0 A${R} ${ry} 0 0 1 ${-R} 0`);
+    const g=core+40;jets.forEach(j=>j.setAttribute('d',`M0 ${-J} V${-g} M0 ${g} V${J}`));
+    rot.setAttribute('transform',`rotate(${st.r})`);
+    if(o2){o2.setAttribute('ry',R*1.45*st.t*.8);o2.setAttribute('transform',`rotate(${st.r*.7})`)}
+  }
+  draw();
+  return{set(t,r){st.tt=t;st.tr=r},tick(){st.t+=(st.tt-st.t)*.07;st.r+=(st.tr-st.r)*.07;draw()},svg};
+}
+const marks={
+  hero:mark($('#heroMark'),{orbit:true}),
+  root:mark($('#rootMark'),{glow:false,core:110,R:360,J:470,sw:56,jw:36}),
+  part:mark($('#partMark'),{orbit:true}),
+  close:mark($('#closeMark'),{orbit:true,core:90,R:300,J:420,sw:40,jw:26})
+};
+let mx=.5,my=.5,idle=0;
+addEventListener('pointermove',e=>{mx=e.clientX/innerWidth;my=e.clientY/innerHeight;idle=0});
+function loop(t){
+  idle++;
+  const auto=idle>120, s=t/1000;
+  const x=auto?.5+Math.sin(s*.35)*.35:mx, y=auto?.5+Math.cos(s*.27)*.4:my;
+  const tilt=.06+y*.42, r=-32+x*64;
+  for(const k in marks){const m=marks[k];if(!m.svg.closest('.s').classList.contains('on'))continue;m.set(tilt,r);m.tick()}
+  const g=$('#coverGlow');if(slides[cur].id==='s-cover'){g.style.setProperty('--gx',(55+x*14)+'%');g.style.setProperty('--gy',(40+y*20)+'%')}
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+/* ---- navigation ---- */
+const cn=$('#cn'),ctEl=$('#ct'),chap=$('#chap'),bar=$('#bar');ctEl.textContent=String(N).padStart(2,'0');
+function go(i,push=true){
+  i=Math.max(0,Math.min(N-1,i));
+  slides[cur].classList.remove('on');cur=i;const s=slides[cur];
+  // restart entrance animations
+  $$('[data-a]',s).forEach(el=>{el.style.animation='none';el.offsetWidth;el.style.animation=''});
+  s.classList.add('on');
+  const th=[...s.classList].find(c=>c.startsWith('t-'));
+  deck.style.setProperty('--bg',s.dataset.bg||themeBg[th]);
+  document.documentElement.style.setProperty('--hud',s.dataset.hud||themeHud[th]);
+  cn.textContent=String(cur+1).padStart(2,'0');chap.textContent=s.dataset.ch||'';
+  bar.style.width=((cur+1)/N*100)+'%';
+  $('#noteTx').textContent=s.dataset.note||'';
+  $$('#ovg button').forEach((b,j)=>b.classList.toggle('on',j===cur));
+  if(push)history.replaceState(null,'','#'+(cur+1));
+  onEnter[s.id]&&onEnter[s.id](s);
+}
+const onEnter={};
+$('#bNext').onclick=()=>go(cur+1);$('#bPrev').onclick=()=>go(cur-1);$('#brand').onclick=()=>go(0);
+const ov=$('#ov'),ovg=$('#ovg');
+slides.forEach((s,j)=>{const b=document.createElement('button');b.innerHTML=`<i>${String(j+1).padStart(2,'0')} ${s.dataset.ch}</i><span>${s.dataset.title}</span>`;b.onclick=()=>{ov.classList.remove('on');go(j)};ovg.appendChild(b)});
+const toggleOv=()=>ov.classList.toggle('on');
+$('#bOv').onclick=toggleOv;
+const fs=()=>{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen?.()};
+$('#bFs').onclick=fs;
+addEventListener('keydown',e=>{
+  if(e.target.isContentEditable||/INPUT|TEXTAREA/.test(e.target.tagName)){if(e.key==='Escape')e.target.blur();return}
+  const k=e.key;
+  if(['ArrowRight','PageDown',' ','Enter'].includes(k)){e.preventDefault();go(cur+1)}
+  else if(['ArrowLeft','PageUp','Backspace'].includes(k)){e.preventDefault();go(cur-1)}
+  else if(k==='Home')go(0);else if(k==='End')go(N-1);
+  else if(k==='g'||k==='G'||k==='Escape'&&ov.classList.contains('on'))toggleOv();
+  else if(k==='f'||k==='F')fs();
+  else if(k==='n'||k==='N')$('#notes').classList.toggle('on');
+});
+let tx=null,ty0=null;
+addEventListener('touchstart',e=>{const t=e.touches[0];tx=t.clientX;ty0=t.clientY},{passive:true});
+addEventListener('touchend',e=>{if(tx===null)return;const t=e.changedTouches[0],dx=t.clientX-tx,dy=t.clientY-ty0;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.4&&!e.target.closest('.cmp'))go(cur+(dx<0?1:-1));tx=null},{passive:true});
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),1600)}
+
+/* ---- 03 insight ---- */
+const ins={core:['Core','The system that swallows people.'],disk:['Disk','Orbit. Community.'],jet:['Jets','Direction and reach.'],halo:['Halo','The light that escapes.']};
+$$('#s-insight .dot').forEach(d=>{const f=()=>{$$('#s-insight .dot').forEach(x=>x.classList.toggle('on',x===d));$('#insK').textContent=ins[d.dataset.k][0];$('#insV').textContent=ins[d.dataset.k][1]};d.onmouseenter=f;d.onclick=f});
+
+/* ---- 04 parts ---- */
+const pm=$('#partMark');
+$$('#partList button').forEach(b=>{
+  const on=()=>{pm.classList.add('iso');$$('[data-p]',pm).forEach(p=>p.classList.toggle('hit',p.dataset.p===b.dataset.part));$$('#partList button').forEach(x=>x.classList.toggle('on',x===b))};
+  const off=()=>{pm.classList.remove('iso');$$('#partList button').forEach(x=>x.classList.remove('on'))};
+  b.onmouseenter=on;b.onfocus=on;b.onmouseleave=off;b.onblur=off;b.onclick=on;
+});
+
+/* ---- 05 lockups ---- */
+const lockS=$('#s-lock'),lockImgs=$$('#lockStage img');
+function setLock(i){lockImgs.forEach((im,j)=>im.classList.toggle('on',j===i));$$('#lockChips .chip').forEach((c,j)=>c.classList.toggle('on',j===i));
+  const im=lockImgs[i],light=/^#[EF]/i.test(im.dataset.bg);
+  lockS.style.background=im.dataset.bg;lockS.style.color=im.dataset.fg;lockS.style.setProperty('--ink',light?'#14111A':'#F4EAD8');lockS.style.setProperty('--mute',light?'#6B6170':'#9C8F84');lockS.style.setProperty('--rule',light?'rgba(20,17,26,.2)':'rgba(244,234,216,.18)');lockS.style.setProperty('--bgc',im.dataset.bg);
+  lockS.dataset.bg=im.dataset.bg;lockS.dataset.hud=light?'#14111A':'#F4EAD8';
+  if(slides[cur]===lockS){deck.style.setProperty('--bg',im.dataset.bg);document.documentElement.style.setProperty('--hud',lockS.dataset.hud)}}
+$$('#lockChips .chip').forEach((c,j)=>c.onclick=()=>setLock(j));setLock(0);
+
+/* ---- 06 compare ---- */
+const cmp=$('#cmp');
+function cmpAt(x){const r=cmp.getBoundingClientRect();cmp.style.setProperty('--x',Math.max(0,Math.min(100,(x-r.left)/r.width*100))+'%')}
+let drag=false;
+cmp.addEventListener('pointerdown',e=>{drag=true;cmp.setPointerCapture(e.pointerId);cmpAt(e.clientX)});
+cmp.addEventListener('pointermove',e=>{if(drag||e.pointerType==='mouse')cmpAt(e.clientX)});
+cmp.addEventListener('pointerup',()=>drag=false);
+onEnter['s-reg']=()=>{let p=0;const a=setInterval(()=>{p+=1;cmp.style.setProperty('--x',(50+Math.sin(p/14)*30)+'%');if(p>88){clearInterval(a);cmp.style.setProperty('--x','50%')}},16)};
+
+/* ---- 07 NOT ---- */
+const notBox=$('#notBox');
+function drawX(){notBox.classList.remove('drawn');void notBox.offsetWidth;setTimeout(()=>notBox.classList.add('drawn'),60)}
+onEnter['s-not']=()=>{notBox.classList.remove('drawn');setTimeout(()=>{if(slides[cur].id==='s-not')drawX()},1100)};
+$('#notBtn').onclick=drawX;
+
+/* ---- 10 palette ---- */
+const pal=[['Void','#050307','#F4EAD8'],['Cream','#F4EAD8','#050307'],['Halo','#FFF3D6','#050307'],['Gold','#FFB347','#050307'],['Molten','#FF7A1A','#050307'],['Ember','#FF4D1F','#050307'],['Jet','#A98BFF','#050307'],['Electric','#4D7CFF','#050307']];
+const palEl=$('#pal');
+pal.forEach(([n,h,c],j)=>{const b=document.createElement('button');b.style.background=h;b.style.setProperty('--c',c);b.innerHTML=`<b>${n}</b><span>${h}</span>`;b.setAttribute('data-a','fade');b.style.setProperty('--i',j*.6);
+  b.onclick=()=>{navigator.clipboard?.writeText(h).then(()=>toast('Copied '+h),()=>toast(h))};palEl.appendChild(b)});
+
+/* ---- 11 type ---- */
+$('#typeLive').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();e.target.blur()}});
+
+/* ---- 12 illustration ---- */
+const ill=$$('#ill img'),illC=$$('#illChips .chip');let illI=0,illT=null;
+function setIll(i){illI=i;ill.forEach((m,j)=>m.classList.toggle('on',j===i));illC.forEach((c,j)=>c.classList.toggle('on',j===i))}
+illC.forEach((c,j)=>c.onclick=()=>{setIll(j);clearInterval(illT)});
+onEnter['s-ill']=()=>{clearInterval(illT);illT=setInterval(()=>{if(slides[cur].id!=='s-ill')return clearInterval(illT);setIll((illI+1)%ill.length)},3200)};
+
+/* ---- 14 booth ---- */
+$$('#boothChips .chip').forEach((c,j)=>c.onclick=()=>{$$('#boothChips .chip').forEach((x,k)=>x.classList.toggle('on',k===j));$('#booth').classList.toggle('scale',j===1)});
+
+/* ---- 16 tilt ---- */
+$$('.tilt').forEach(el=>{el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`rotateY(${x*22}deg) rotateX(${-y*22}deg) scale(1.04)`});el.addEventListener('pointerleave',()=>el.style.transform='')});
+
+/* ---- 18 web ---- */
+const chs=[['Ignition','Become the brightest light.',0],['The orbit','Eight projects, one gravity.',0],['Data Black Holes','Invisible by design.',0],['Quasar Physics','Stories and data on one plane.',0],['Method','HIIPED, a method in motion.',1],['Origin','Born at MIT, raised in community.',1],['Arrival','Come build the light.',1]];
+const cl=$('#chapList'),line=$('#chapLine'),scr=$$('#webScr img');
+chs.forEach(([n,l,img],j)=>{const li=document.createElement('li');li.innerHTML=`<button><i>0${j+1}</i>${n}</button>`;const b=li.firstChild;
+  const f=()=>{$$('#chapList button').forEach(x=>x.classList.toggle('on',x===b));line.textContent=l;scr.forEach((s,k)=>s.classList.toggle('on',k===img))};
+  b.onmouseenter=f;b.onclick=f;b.onfocus=f;cl.appendChild(li);if(j===0)f()});
+
+/* ---- start ---- */
+const fromHash=()=>{const h=parseInt(location.hash.slice(1));if(!isNaN(h)&&h-1!==cur)go(h-1,false)};
+addEventListener('hashchange',fromHash);
+const h0=parseInt(location.hash.slice(1));go(isNaN(h0)?0:h0-1,false);
+})();
+</script>
+</body>
+</html>
